@@ -1,8 +1,8 @@
 {
-  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "seed": "node prisma/seed.mjs"
   },
   "dependencies": {
     "@hono/node-server": "^1.11.1",
@@ -11,6 +11,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "prisma": "^5.13.0",
+    "ts-node": "^10.9.2",
     "tsx": "^4.7.1"
   }
 }

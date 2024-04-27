@@ -5,9 +5,10 @@ FROM base AS builder
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package*json tsconfig.json src ./
+COPY . ./
 
 RUN npm ci && \
+    npx prisma generate && \
     npm run build && \
     npm prune --production
 
@@ -19,6 +20,7 @@ RUN adduser --system --uid 1001 hono
 
 COPY --from=builder --chown=hono:nodejs /app/node_modules /app/node_modules
 COPY --from=builder --chown=hono:nodejs /app/dist /app/dist
+COPY --from=builder --chown=hono:nodejs /app/prisma /app/prisma
 COPY --from=builder --chown=hono:nodejs /app/package.json /app/package.json
 
 USER hono

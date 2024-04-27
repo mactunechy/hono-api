@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "strict": true,
     "types": ["node"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "outDir": "./dist"
   },
+  "include": ["./src", "./prisma"],
   "exclude": ["node_modules"]
 }
